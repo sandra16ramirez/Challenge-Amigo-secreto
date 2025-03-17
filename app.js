@@ -14,14 +14,28 @@ function agregarAmigo() {
     if (nombreAmigos === ""){
         alert('Por favor, inserte un nombre.');
         return;
+    }  else if (listaAmigos.includes(nombreAmigos)) {
+        alert('Este amigo ya está en la lista.');
+        limpiarCaja();
+        return;
     } else {
         listaAmigos.push(nombreAmigos);
         console.log (listaAmigos);
     }
-    asignarTextoElemento("#listaAmigos", listaAmigos.join(", "));
+    mostrarLista(); 
     limpiarCaja();
-
 }
 function limpiarCaja() {
     document.querySelector('#amigo').value = '';
+}
+// Función para mostrar la lista en el HTML
+function mostrarLista() {
+    let listaHTML = document.getElementById('listaAmigos'); 
+    listaHTML.innerHTML = ""; 
+
+    for (let i = 0; i < listaAmigos.length; i++) {
+        let li = document.createElement('li'); 
+        li.textContent = listaAmigos[i]; 
+        listaHTML.appendChild(li); 
+    }
 }
