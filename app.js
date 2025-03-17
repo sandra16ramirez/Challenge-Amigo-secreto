@@ -1,4 +1,3 @@
-let nombreAmigos = 0;
 //Lista de participantes
 let listaAmigos = [];
 
@@ -9,16 +8,20 @@ function asignarTextoElemento(elemento, texto) {
     return;
 }
 // Función para verificar y agregar un amigo a la lista
-function verificarEntrada() {
+function agregarAmigo() {
     let nombreAmigos = document.getElementById('amigo').value;
   
-    if (nombreAmigos == ""){
-        alert ('Por favor, inserte un nombre.');
+    if (nombreAmigos === ""){
+        alert('Por favor, inserte un nombre.');
         return;
     } else {
         listaAmigos.push(nombreAmigos);
         console.log (listaAmigos);
     }
-    asignarTextoElemento("#lista", listaAmigos.join(", "));
+    asignarTextoElemento("#listaAmigos", listaAmigos.join(", "));
+    limpiarCaja();
 
+}
+function limpiarCaja() {
+    document.querySelector('#amigo').value = '';
 }
